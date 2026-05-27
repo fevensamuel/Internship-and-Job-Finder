@@ -36,6 +36,7 @@ $total_apps = $conn->query("SELECT COUNT(*) as count FROM applications")->fetch_
         <a href="manage_users.php">Manage Users</a>
         <a href="manage_opportunities.php">Review Opportunities (<?php echo $pending_jobs; ?>)</a>
         <a href="manage_applications.php">Manage Applications</a>
+        <a href="expired_posts.php">Expired Posts</a>
         <a href="../settings.php">Settings</a>
         <a href="../auth/logout.php" style="color:#e74c3c">Logout</a>
     </div>
@@ -85,7 +86,7 @@ $total_apps = $conn->query("SELECT COUNT(*) as count FROM applications")->fetch_
                 <p><?php echo $total_users; ?></p>
             </div>
             <div class="stat-card">
-                <h3>Pending Opportunities</h3>
+                <h3>Pending Jobs</h3>
                 <p><?php echo $pending_jobs; ?></p>
             </div>
             <div class="stat-card">

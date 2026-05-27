@@ -38,7 +38,7 @@ $jobs = $conn->query($sql);
         .pending { background: #fef9e7; color: #f39c12; }
         .approved { background: #e8f8f5; color: #1abc9c; }
         .rejected { background: #fdedec; color: #e74c3c; }
-        .btn { padding: 5px 12px; border-radius: 4px; text-decoration: none; color: white; font-size: 0.8em; margin-right: 5px; }
+        .btn { display: inline-block; padding: 6px 12px; border-radius: 4px; text-decoration: none; color: white; font-size: 0.8em; margin-right: 5px; font-weight: bold; }
         .approve-btn { background: #2ecc71; }
         .reject-btn { background: #e74c3c; }
     </style>
@@ -49,6 +49,7 @@ $jobs = $conn->query($sql);
         <a href="manage_users.php">Manage Users</a>
         <a href="manage_opportunities.php" style="background:#34495e">Review Opportunities</a>
         <a href="manage_applications.php">Manage Applications</a>
+        <a href="expired_posts.php">Expired Posts</a>
         <a href="../settings.php">Settings</a>
         <a href="../auth/logout.php" style="color:#e74c3c">Logout</a>
     </div>
@@ -98,6 +99,8 @@ $jobs = $conn->query($sql);
                     <th>Company</th>
                     <th>Title</th>
                     <th>Type</th>
+                    <th>Posted Date</th>
+                    <th>Deadline</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -107,9 +110,11 @@ $jobs = $conn->query($sql);
                 <tr>
                     <td><?php echo $row['company_name']; ?></td>
                     <td><?php echo $row['title']; ?></td>
-                    <td><?php echo $row['type']; ?></td>
+                    <td><?php echo ucfirst($row['type']); ?></td>
+                    <td><?php echo date('M d, Y', strtotime($row['created_at'])); ?></td>
+                    <td><?php echo date('M d, Y', strtotime($row['deadline'])); ?></td>
                     <td><span class="status <?php echo $row['status']; ?>"><?php echo ucfirst($row['status']); ?></span></td>
-                    <td>
+                    <td style="white-space: nowrap;">
                         <?php if($row['status'] == 'pending'): ?>
                             <a href="manage_opportunities.php?action=approve&oid=<?php echo $row['id']; ?>" class="btn approve-btn">Approve</a>
                             <a href="manage_opportunities.php?action=reject&oid=<?php echo $row['id']; ?>" class="btn reject-btn">Reject</a>

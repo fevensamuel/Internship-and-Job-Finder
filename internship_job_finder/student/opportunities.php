@@ -116,9 +116,9 @@ $opportunities = $conn->query($sql);
 <body>
     <div class="sidebar">
         <a href="dashboard.php">Dashboard</a>
-        <a href="opportunities.php" style="background:#34495e">Find Jobs</a>
+        <a href="opportunities.php" style="background:#34495e">Find Opportunities</a>
         <a href="my_applications.php">My Applications</a>
-        <a href="saved_opportunities.php">Saved Jobs</a>
+        <a href="saved_opportunities.php">Saved Opportunities</a>
         <a href="../settings.php">Settings</a>
         <a href="../auth/logout.php" style="color:#e74c3c">Logout</a>
     </div>
@@ -228,14 +228,22 @@ $opportunities = $conn->query($sql);
                 <span class="badge" style="background:#ebf5fb; color:#2980b9;"><?php echo $row['category']; ?></span>
                 <h3><?php echo $row['title']; ?></h3>
                 <div class="meta"><?php echo $row['company_name']; ?> • <?php echo $row['location']; ?></div>
-                <div class="meta" style="color:#e67e22; font-weight:bold;">
-                    Deadline: <?php echo date('M d, Y', strtotime($row['deadline'])); ?> • 
-                    <?php echo $row['applicants_needed']; ?> needed
+                <?php 
+                $is_expired = strtotime($row['deadline']) < strtotime(date('Y-m-d'));
+                ?>
+                <div class="meta" style="<?php echo $is_expired ? 'color:#e74c3c; font-weight:bold;' : 'color:#e67e22; font-weight:bold;'; ?>">
+                    Deadline: <?php echo date('M d, Y', strtotime($row['deadline'])); ?> 
+                    <?php if($is_expired): ?>
+                        <span style="color:#e74c3c; font-weight:bold;">(Expired)</span>
+                    <?php endif; ?>
+                    • <?php echo $row['applicants_needed']; ?> needed
                 </div>
                 <div class="desc"><?php echo substr($row['description'], 0, 150); ?>...</div>
                 
                 <div class="actions">
-                    <?php if($appModel->hasApplied($student_id, $row['id'])): ?>
+                    <?php if($is_expired): ?>
+                        <button class="btn" style="background:#bdc3c7; color:#7f8c8d; cursor:not-allowed; border:none; padding:10px;" disabled>Closed</button>
+                    <?php elseif($appModel->hasApplied($student_id, $row['id'])): ?>
                         <button class="btn applied-btn" disabled>Applied</button>
                     <?php else: ?>
                         <a href="apply.php?id=<?php echo $row['id']; ?>" class="btn apply-btn">Apply Now</a>

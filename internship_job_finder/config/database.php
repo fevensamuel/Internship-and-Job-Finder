@@ -5,7 +5,7 @@ $password = '';
 $dbname = 'job_portal';
 
 // Create connection
-$conn = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $password, $dbname, 3307);
 
 // Check connection
 if ($conn->connect_error) {

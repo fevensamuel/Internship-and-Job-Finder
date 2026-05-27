@@ -36,6 +36,7 @@ $apps = $conn->query($sql);
         <a href="manage_users.php">Manage Users</a>
         <a href="manage_opportunities.php">Review Opportunities</a>
         <a href="manage_applications.php" style="background:#34495e">Manage Applications</a>
+        <a href="expired_posts.php">Expired Posts</a>
         <a href="../settings.php">Settings</a>
         <a href="../auth/logout.php" style="color:#e74c3c">Logout</a>
     </div>

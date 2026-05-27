@@ -14,6 +14,11 @@ $opportunity_id = $_GET['id'];
 $oppModel = new Opportunity($conn);
 $opp = $oppModel->getById($opportunity_id);
 
+if (!$opp || (strtotime($opp['deadline']) < strtotime(date('Y-m-d')))) {
+    header("Location: opportunities.php");
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message = $_POST['message'];
     $cv_file_name = "";
