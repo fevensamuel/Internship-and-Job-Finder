@@ -116,9 +116,9 @@ $opportunities = $conn->query($sql);
 <body>
     <div class="sidebar">
         <a href="dashboard.php">Dashboard</a>
-        <a href="opportunities.php" style="background:#34495e">Find Opportunities</a>
+        <a href="opportunities.php" style="background:#34495e">Find Jobs</a>
         <a href="my_applications.php">My Applications</a>
-        <a href="saved_opportunities.php">Saved Opportunities</a>
+        <a href="saved_opportunities.php">Saved Jobs</a>
         <a href="../settings.php">Settings</a>
         <a href="../auth/logout.php" style="color:#e74c3c">Logout</a>
     </div>
@@ -218,9 +218,9 @@ $opportunities = $conn->query($sql);
                 <?php if($row['salary_type'] != 'none'): ?>
                     <span class="badge salary-badge">
                         <?php if($row['salary_type'] == 'fixed'): ?>
-                            $<?php echo number_format($row['salary_amount']); ?>/mo
+                            ETB <?php echo number_format($row['salary_amount']); ?>/mo
                         <?php else: ?>
-                            $<?php echo number_format($row['salary_amount']); ?> - $<?php echo number_format($row['salary_max']); ?>/mo
+                            ETB <?php echo number_format($row['salary_amount']); ?> - ETB <?php echo number_format($row['salary_max']); ?>/mo
                         <?php endif; ?>
                     </span>
                 <?php endif; ?>

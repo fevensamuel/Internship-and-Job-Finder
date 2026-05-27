@@ -55,9 +55,9 @@ $saved = $conn->query($sql);
 <body>
     <div class="sidebar">
         <a href="dashboard.php">Dashboard</a>
-        <a href="opportunities.php">Find Opportunities</a>
+        <a href="opportunities.php">Find Jobs</a>
         <a href="my_applications.php">My Applications</a>
-        <a href="saved_opportunities.php" style="background:#34495e">Saved Opportunities</a>
+        <a href="saved_opportunities.php" style="background:#34495e">Saved Jobs</a>
         <a href="../settings.php">Settings</a>
         <a href="../auth/logout.php" style="color:#e74c3c">Logout</a>
     </div>
@@ -116,9 +116,9 @@ $saved = $conn->query($sql);
                 <?php if($row['salary_type'] != 'none'): ?>
                     <span class="badge salary-badge">
                         <?php if($row['salary_type'] == 'fixed'): ?>
-                            $<?php echo number_format($row['salary_amount']); ?>/mo
+                            ETB <?php echo number_format($row['salary_amount']); ?>/mo
                         <?php else: ?>
-                            $<?php echo number_format($row['salary_amount']); ?> - $<?php echo number_format($row['salary_max']); ?>/mo
+                            ETB <?php echo number_format($row['salary_amount']); ?> - ETB <?php echo number_format($row['salary_max']); ?>/mo
                         <?php endif; ?>
                     </span>
                 <?php endif; ?>
@@ -144,7 +144,7 @@ $saved = $conn->query($sql);
             <?php endwhile; ?>
             <?php if($saved->num_rows == 0): ?>
                 <div style="grid-column: 1 / -1; background: white; padding: 40px; text-align: center; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);" class="card">
-                    <h3 style="margin-top:0; color:#e74c3c;">No Saved Opportunities</h3>
+                    <h3 style="margin-top:0; color:#e74c3c;">No Saved Jobs</h3>
                     <p style="color:#7f8c8d; margin-bottom:0;">Explore opportunities and save them to find them in this view.</p>
                 </div>
             <?php endif; ?>

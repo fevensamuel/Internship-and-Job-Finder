@@ -155,16 +155,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </select>
                     </div>
                     <div id="salaryFixed" class="form-group hidden">
-                        <label>Monthly Salary ($)</label>
+                        <label>Monthly Salary (ETB)</label>
                         <input type="number" name="salary_amount" value="<?php echo $opp['salary_amount']; ?>" placeholder="e.g. 5000">
                     </div>
                     <div id="salaryRange" class="hidden">
                         <div class="form-group">
-                            <label>Min Salary ($)</label>
+                            <label>Min Salary (ETB)</label>
                             <input type="number" name="salary_amount" value="<?php echo $opp['salary_amount']; ?>" placeholder="Min">
                         </div>
                         <div class="form-group">
-                            <label>Max Salary ($)</label>
+                            <label>Max Salary (ETB)</label>
                             <input type="number" name="salary_max" value="<?php echo $opp['salary_max']; ?>" placeholder="Max">
                         </div>
                     </div>
